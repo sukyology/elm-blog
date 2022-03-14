@@ -9,4 +9,5 @@ view model = div [class "contents"] [
     , div [id "thumbnails"] []
     ]
 
+--starting function always have to be named main
 main = view "no model yet"
