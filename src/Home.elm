@@ -4,10 +4,20 @@ module Home exposing (main)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 
+initialModel =
+    [
+        "banana"
+        , "apple"
+    ]
+
+textFruit fruit = li [] [text fruit]
+
 view model = div [class "contents"] [
     h1 [] [text "HOME"]
-    , div [id "thumbnails"] []
+    , div [id "thumbnails"] [
+        ul [] (List.map textFruit model)
+    ]
     ]
 
 --starting function always have to be named main
-main = view "no model yet"
+main = view initialModel
