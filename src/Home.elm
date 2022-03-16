@@ -10,12 +10,12 @@ initialModel =
         , "apple"
     ]
 
-textFruit fruit = li [] [text fruit]
+textFruit favorite fruit = if (fruit == favorite) then li [] [b [] [text fruit]] else li [] [text fruit]
 
 view model = div [class "contents"] [
     h1 [] [text "HOME"]
     , div [id "thumbnails"] [
-        ul [] (List.map textFruit model)
+        ul [] (List.map (textFruit "banana") model)
     ]
     ]
 
