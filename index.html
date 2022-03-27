@@ -1,6 +1,15 @@
 <!doctype html>
 <html>
 <head>
+    <script>
+        class RangeSlider extends HTMLElement {
+            connectedCallback() {
+                var input = document.createElement("input");
+                this.appendChild(input);
+            }
+        }
+        window.customElements.define("range-slider", RangeSlider);
+    </script>
     <style>
         body { background-color: rgb(44, 44, 44); color: white; }
         img { border: 1px solid white; margin: 5px; }
