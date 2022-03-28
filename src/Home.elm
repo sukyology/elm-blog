@@ -33,6 +33,7 @@ update msg model = case msg of
 
 view: Model -> Html UpdateMsg
 view model = div [class "contents"] [
+    node "p" [] [text "this is paragraph"],
     input [type_ "text", placeholder "과일 입력하세요", value model.content, onInput ChangeMsg ] []
     ,  input [type_"button", value "추가", onClick <| ClickMsg{action = "add", fruit = model.content}] []
     ,h1 [] [text "HOME"]
