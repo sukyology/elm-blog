@@ -1,9 +1,13 @@
 module Home exposing (main)
 
+
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
+import Json.Encode
+
+
 
 type alias Model =
     { list: List String, content: String
@@ -42,6 +46,22 @@ view model = div [class "contents"] [
     ]
     ]
 
+rangeSlider: List (Attribute msg) -> List (Html msg) -> Html msg
+rangeSlider attr child =
+    node "range-slider" attr child
+
+viewFilter : String -> Int -> Html UpdateMsg
+viewFilter name magnitude =
+    div [ class "filter-slider" ]
+    [ label [] [ text name ]
+    , rangeSlider
+    [ max "11"
+    , Html.Attributes.property "val" (Json.Encode.int magnitude)
+    ]
+    []
+    , label [] [ text (String.fromInt magnitude) ]
+    ]
+
 --starting function always have to be named main
 main: Program () Model UpdateMsg
 main = Browser.element
@@ -50,3 +70,4 @@ main = Browser.element
         , update = update
         , subscriptions = \_ -> Sub.none
     }
+
